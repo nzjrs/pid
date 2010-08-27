@@ -93,7 +93,6 @@ float pid_calculate(PID_t *pid, float val, float dt)
                 error, pid->integral, ABS(i) == pid->intmax);
 
     if ( WINDUP_ON(pid) ) {
-        printf("\t%.1f v %.1f\n", i, pid->intmax);
         if ( i < 0 )
             i = ( i < -pid->intmax ? -pid->intmax : i );
         else
