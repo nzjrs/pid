@@ -8,6 +8,10 @@
 #ifndef PID_H_
 #define PID_H_
 
+#ifdef  __cplusplus
+extern "C" {
+#endif
+
 typedef struct {
 		float kp;
 		float ki;
@@ -43,5 +47,9 @@ void    pid_set                                     (PID_t          *pid,
 float   pid_calculate                               (PID_t          *pid,
                                                      float          val,
                                                      float          dt);
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif /* PID_H_ */
