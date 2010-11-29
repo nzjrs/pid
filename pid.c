@@ -60,7 +60,7 @@ void pid_init(PID_t *pid, float kp, float ki, float kd)
     pid->features = 0;
 
     if (DEBUG_ON(pid))
-        printf("P,I,D,error,i_total,int_windup\n");
+        printf("setpoint,value,P,I,D,error,i_total,int_windup\n");
 }
 
 void pid_set(PID_t *pid, float sp)
@@ -88,7 +88,8 @@ float pid_calculate(PID_t *pid, float val, float dt)
     total = (error * pid->kp) + (i * pid->ki) + (d * pid->kd);
 
     if (DEBUG_ON(pid))
-        printf("%.1f,%.1f,%.1f,%.1f,%.1f,%d\n", 
+        printf("%.1f,%.1f,%.1f,%.1f,%.1f,%.1f,%.1f,%d\n", 
+                pid->sp,val,
                 (error * pid->kp), (i * pid->ki), (d * pid->kd),
                 error, pid->integral, ABS(i) == pid->intmax);
 
